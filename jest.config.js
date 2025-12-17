@@ -9,6 +9,7 @@ module.exports = {
     '**/*.(t|j)s',
   ],
   coverageDirectory: '../coverage',
+  coverageReporters: ['text', 'lcov', 'html'],
   testEnvironment: 'node',
   moduleNameMapper: {
     '^@domain/(.*)$': '<rootDir>/domain/$1',

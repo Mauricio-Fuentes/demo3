@@ -1,6 +1,6 @@
 # DEMO3 - NestJS + DDD
 
-Proyecto NestJS organizado según una arquitectura **DDD (Domain-Driven Design)** con implementación completa de la entidad User.
+Proyecto NestJS organizado según la Arquitectura **DDD (Domain-Driven Design)** con implementación completa de la entidad User.
 
 ## Estructura principal
 
@@ -89,7 +89,7 @@ Crea un nuevo usuario.
 **Request Body:**
 ```json
 {
-  "id": "user-1",
+  "id": "1",
   "name": "Mauricio",
   "email": "mauricio@example.com",
   "password": "secreto123"
@@ -99,7 +99,7 @@ Crea un nuevo usuario.
 **Response (201 Created):**
 ```json
 {
-  "id": "user-1",
+  "id": "1",
   "name": "Mauricio",
   "email": "mauricio@example.com",
   "password": "$2b$10$hashedPassword1234567890123456789012345678901234567890123456789012",
@@ -113,7 +113,7 @@ Crea un nuevo usuario.
 ```json
 {
   "statusCode": 409,
-  "message": "El usuario con ID 'user-1' ya existe"
+  "message": "El usuario con ID '1' ya existe"
 }
 ```
 
@@ -180,5 +180,43 @@ npm run start:dev
 ```
 
 La aplicación estará disponible en `http://localhost:3000`
+
+## CI/CD con GitHub Actions
+
+El proyecto incluye un workflow de GitHub Actions (`.github/workflows/ci.yml`) que se ejecuta automáticamente en cada push y pull request.
+
+### Integración con SonarQube Cloud
+
+El proyecto está configurado para usar **SonarQube Cloud** para análisis de código y reportes de cobertura.
+
+#### Configuración inicial
+
+1. **Crear cuenta en SonarQube Cloud**:
+   - Visita [sonarcloud.io](https://sonarcloud.io)
+   - Crea una cuenta o inicia sesión con GitHub
+
+2. **Crear organización y proyecto**:
+   - Crea una organización en SonarQube Cloud
+   - Crea un nuevo proyecto y obtén el `projectKey` y `organization`
+
+3. **Configurar secrets en GitHub**:
+   - Ve a tu repositorio en GitHub → Settings → Secrets and variables → Actions
+   - Agrega el secret `SONAR_TOKEN` con el token de SonarQube Cloud
+   - El `GITHUB_TOKEN` se genera automáticamente
+
+4. **Actualizar `sonar-project.properties`**:
+   - Reemplaza `your-organization-key` con tu organización de SonarQube
+   - Ajusta `sonar.projectKey` si es necesario
+
+#### El workflow ejecuta:
+
+- ✅ Instalación de dependencias
+- ✅ Linting del código
+- ✅ Ejecución de tests unitarios
+- ✅ Generación de reporte de cobertura
+- ✅ Build del proyecto
+- ✅ Análisis de código con SonarQube Cloud
+
+Los reportes de cobertura y análisis de calidad de código estarán disponibles en tu dashboard de SonarQube Cloud.
 
 
