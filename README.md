@@ -1,6 +1,6 @@
 # DEMO3 - NestJS + DDD
 
-Proyecto NestJS organizado según la Arquitectura **DDD (Domain-Driven Design)** con implementación completa de la entidad User.
+Proyecto NestJS organizado según la arquitectura **DDD (Domain-Driven Design)** con implementación completa de la entidad User.
 
 ## Estructura principal
 
@@ -89,7 +89,7 @@ Crea un nuevo usuario.
 **Request Body:**
 ```json
 {
-  "id": "1",
+  "id": "user-1",
   "name": "Mauricio",
   "email": "mauricio@example.com",
   "password": "secreto123"
@@ -99,7 +99,7 @@ Crea un nuevo usuario.
 **Response (201 Created):**
 ```json
 {
-  "id": "1",
+  "id": "user-1",
   "name": "Mauricio",
   "email": "mauricio@example.com",
   "password": "$2b$10$hashedPassword1234567890123456789012345678901234567890123456789012",
@@ -113,7 +113,7 @@ Crea un nuevo usuario.
 ```json
 {
   "statusCode": 409,
-  "message": "El usuario con ID '1' ya existe"
+  "message": "El usuario con ID 'user-1' ya existe"
 }
 ```
 
